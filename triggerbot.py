@@ -34,8 +34,8 @@ def disable_patch(proc):
 
 
 def triggerbot(proc):
-    can_shoot = read_int(proc, pointer_chain(proc, 0x50f4f4, [0x250], 4))
-    shoot_addr = pointer_chain(proc, 0x50f4f4, [0x224], 4)
+    can_shoot = read_int(proc, pointer_chain(proc, 0x50F4F4, [0x250], 4))
+    shoot_addr = pointer_chain(proc, 0x50F4F4, [0x224], 4)
     if can_shoot:
         write_byte(proc, shoot_addr, 1)
     else:
