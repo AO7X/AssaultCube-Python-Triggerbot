@@ -1,0 +1,24 @@
+original_instruction_addr = 0040AD9D
+original_instruction = "call 0x004607C0"
+cave_addr = 004D9A81
+return_addr = 0040ADA2
+
+original:
+0040AD9D | E8 1E5A0500              | call ac_client.4607C0                   |
+
+patched:
+0040AD9D | E9 DFEC0C00              | jmp ac_client.4D9A81                    |
+
+004D9A81 | E8 3A6DF8FF              | call ac_client.4607C0                   |
+004D9A86 | 85C0                     | test eax,eax                            |
+004D9A88 | 75 13                    | jne ac_client.4D9A9D                    |
+004D9A8A | 50                       | push eax                                |
+004D9A8B | A1 F4F45000              | mov eax,dword ptr ds:[50F4F4]           |
+004D9A90 | C680 50020000 00         | mov byte ptr ds:[eax+250],0             |
+004D9A97 | 58                       | pop eax                                 |
+004D9A98 | E9 0513F3FF              | jmp ac_client.40ADA2                    |
+004D9A9D | 50                       | push eax                                |
+004D9A9E | A1 F4F45000              | mov eax,dword ptr ds:[50F4F4]           |
+004D9AA3 | C680 50020000 01         | mov byte ptr ds:[eax+250],1             |
+004D9AAA | 58                       | pop eax                                 |
+004D9AAB | E9 F212F3FF              | jmp ac_client.40ADA2                    |
